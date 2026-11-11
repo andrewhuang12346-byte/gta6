@@ -9,10 +9,11 @@
 
   Edit the CONFIG and ROADMAP blocks at the top of the <script> near the end of this file.
 
-  Art lives in /assets (each a separate WebP, 250 KB or less). Drop real art in with the same names:
-    hero.webp (16:9) · poster.webp (4:5) · crew.webp (21:9) · gallery-1.webp (2:1)
-    gallery-2.webp, gallery-3.webp, gallery-4.webp, ride.webp (4:3)
+  Art lives in /assets (each a separate WebP, 250 KB or less):
+    hero.webp (16:9) · poster.webp (3:4) · gallery-1.webp (2:1) · ride.webp (4:3)
     countdown.mp4 (5 s loop) + countdown-poster.webp (16:9 poster frame)
+  Optional slots, ready to switch on when there's art (see comments in the Cast and Gallery sections):
+    crew.webp (21:9) · gallery-2.webp, gallery-3.webp, gallery-4.webp (4:3)
 -->
 <title>Grand Elon Auto X (Full Self-Driving Beta)</title>
 <meta name="description" content="Grand Elon Auto X (Full Self-Driving Beta) — the Vice City parody nobody asked for. Rideshare driver by night, self-driving legend by accident.">
@@ -24,7 +25,7 @@
 <meta property="og:description" content="Grand Elon Auto X (Full Self-Driving Beta) — the Vice City parody nobody asked for. Rideshare driver by night, self-driving legend by accident.">
 <!-- Social scrapers need an absolute URL here: swap in https://your-domain/assets/hero.webp once deployed. -->
 <meta property="og:image" content="assets/hero.webp">
-<meta property="og:image:alt" content="Grand Elon Auto X key art: a rideshare driver and his stainless-steel pickup on Ocean Drive at sunset">
+<meta property="og:image:alt" content="Grand Elon Auto X key art: Elon, arms crossed, in front of a stainless-steel wedge pickup on a neon waterfront at sunset as a rocket lifts off">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Grand Elon Auto X">
 <meta name="twitter:description" content="Grand Elon Auto X (Full Self-Driving Beta) — the Vice City parody nobody asked for. Rideshare driver by night, self-driving legend by accident.">
@@ -191,7 +192,8 @@ main img{cursor:zoom-in}
 
 /* ---------- cast ---------- */
 .cast-head{margin-bottom:28px}
-.cast .sub{margin:30px 0 0}
+.cast .sub{margin:0}
+.cast .img + .sub{margin-top:30px}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:36px;container:cast / inline-size}
 .card{padding:22px;background:rgba(20,5,31,.9);border:3px solid #000;border-radius:14px;box-shadow:6px 6px 0 #000;transition:transform .15s ease,border-color .15s ease}
 .card:hover{transform:translateY(-4px);border-color:var(--pink)}
@@ -226,11 +228,11 @@ main img{cursor:zoom-in}
   .gallery{grid-template-columns:repeat(4,1fr)}
   .g{grid-column:span 2}
   .g-wide{grid-column:1 / -1}
-  .g:last-child{grid-column:2 / span 2}
+  .g:nth-child(4):last-child{grid-column:2 / span 2}
 }
 @media (min-width:900px){
   .gallery{grid-template-columns:repeat(3,1fr)}
-  .g,.g:last-child{grid-column:auto}
+  .g,.g:nth-child(4):last-child{grid-column:auto}
   .g-wide{grid-column:1 / -1}
 }
 
@@ -347,8 +349,8 @@ html.lb-open{overflow:hidden}
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
-  <img class="img hero-art" src="assets/hero.webp" width="1920" height="1080" fetchpriority="high" decoding="async"
-       alt="Grand Elon Auto X key art: Elon, arms crossed with a smug half-smile, in front of a dented stainless-steel wedge pickup on Ocean Drive at sunset as a rocket streaks across the sky">
+  <img class="img hero-art" src="assets/hero.webp" width="1672" height="941" fetchpriority="high" decoding="async"
+       alt="Grand Elon Auto X key art: Elon in a black bomber jacket, arms crossed, in front of a stainless-steel wedge pickup on a wet neon waterfront at sunset as a rocket lifts off behind him">
   <div class="wrap hero-inner">
     <div class="hero-copy">
       <span class="tag">Now Loading · Vice City, Leonida</span>
@@ -396,8 +398,8 @@ html.lb-open{overflow:hidden}
         <p class="closer">Nobody planned for him. He planned for Mars.</p>
       </div>
       <div>
-        <img class="img poster" src="assets/poster.webp" width="1080" height="1350" loading="lazy" decoding="async"
-             alt="Four-panel cover-style poster: Elon checking a rideshare app, the truck's cracked window, Lucia and Jason, and flashing police lights">
+        <img class="img poster" src="assets/poster.webp" width="1086" height="1448" loading="lazy" decoding="async"
+             alt="Cover-style poster reading Grand Elon Auto: Earth to Mars. Elon stands with arms crossed between panels of the pickup on a neon boulevard, a red roadster in orbit, a rocket launch and a domed Mars base">
         <article class="dossier" aria-label="Police dossier">
           <span class="stamp" aria-hidden="true">WANTED</span>
           <p class="dossier-title">📁 VCPD File #FSD-0042</p>
@@ -426,9 +428,9 @@ html.lb-open{overflow:hidden}
       <p class="sub">Five seconds of pure launch-day composure.</p>
     </div>
     <figure class="clip">
-      <video class="img" id="clipVideo" src="assets/countdown.mp4" poster="assets/countdown-poster.webp" width="960" height="540"
+      <video class="img" id="clipVideo" src="assets/countdown.mp4" poster="assets/countdown-poster.webp" width="1280" height="720"
              muted loop playsinline preload="metadata"
-             aria-label="Five-second loop: Elon stares deadpan into the camera while a rocket on the horizon fails to launch"></video>
+             aria-label="Five-second loop: Elon grins from the driver's seat of a red roadster drifting past Earth, with the Moon and Mars behind him"></video>
       <figcaption>🚀 T-minus forever — still loading</figcaption>
     </figure>
   </div>
@@ -441,8 +443,10 @@ html.lb-open{overflow:hidden}
       <span class="kicker">Characters</span>
       <h2>The <span class="hl">Crew</span></h2>
     </div>
+    <!-- Wide group shot goes here once there's art (21:9, assets/crew.webp):
     <img class="img pink" src="assets/crew.webp" width="2100" height="900" loading="lazy" decoding="async"
          alt="Elon driving with his hands off the wheel, Lucia in the passenger seat and Jason in the truck bed, VCPD lights behind them on the causeway">
+    -->
     <p class="sub">Two lovers on the run. One billionaire on the night shift. A truck with its own agenda.</p>
     <div class="cards">
       <article class="card">
@@ -527,10 +531,11 @@ html.lb-open{overflow:hidden}
     </div>
     <div class="gallery">
       <figure class="g g-wide">
-        <img class="img" src="assets/gallery-1.webp" width="1800" height="900" loading="lazy" decoding="async"
-             alt="Elon off the clock outside a neon nightclub on the strip, pointing at the camera">
+        <img class="img" src="assets/gallery-1.webp" width="1672" height="836" loading="lazy" decoding="async"
+             alt="Elon raising a glass of champagne with three friends in a glass-domed lounge on Mars, the pickup parked beside them and a launch pad outside">
         <figcaption class="chip">Off the clock</figcaption>
       </figure>
+      <!-- Up to three more shots (4:3) lay out underneath automatically. Uncomment when the art exists:
       <figure class="g">
         <img class="img" src="assets/gallery-2.webp" width="1200" height="900" loading="lazy" decoding="async"
              alt="A standoff at a neon charging station surrounded by VCPD cruisers">
@@ -546,6 +551,7 @@ html.lb-open{overflow:hidden}
              alt="Driving down Ocean Drive at night with a phone in hand">
         <figcaption class="chip">Ocean Drive</figcaption>
       </figure>
+      -->
     </div>
   </div>
 </section>
@@ -571,8 +577,8 @@ html.lb-open{overflow:hidden}
         <button class="btn btn-pink" id="autopilot" type="button">🤖 Engage Autopilot</button>
       </div>
       <div>
-        <img class="img pink" src="assets/ride.webp" width="1200" height="900" loading="lazy" decoding="async"
-             alt="Three-quarter view of the Cyberbrick, a dented stainless-steel wedge pickup, under neon lights">
+        <img class="img pink" src="assets/ride.webp" width="767" height="575" loading="lazy" decoding="async"
+             alt="The Cyberbrick, a stainless-steel wedge pickup, parked on a wet neon waterfront at sunset as a rocket launches behind it">
         <div class="stats">
           <p class="stats-title">🛻 Spec Sheet</p>
           <div class="stat"><div class="stat-top"><span>Top Speed</span><b>97%</b></div><div class="bar" aria-hidden="true"><i style="--v:97%"></i></div></div>
